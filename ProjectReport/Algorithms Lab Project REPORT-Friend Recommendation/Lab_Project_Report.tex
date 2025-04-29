@@ -1,0 +1,359 @@
+\documentclass[12pt]{report}
+\usepackage[a4paper, left=3.17cm, right=3.17cm, top=2.54cm, bottom=2.54cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{chemformula}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{tabularx,booktabs}
+\newcolumntype{C}{>{\centering\arraybackslash}X} % centered version of "X" type
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{comment}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{cite}
+\usepackage[colorlinks, linkcolor=black, anchorcolor=black, citecolor=black]{hyperref}
+\usepackage{graphicx}
+\setlength{\parskip}{0.5em}
+\title{Place Your Project Title at Here}
+%\author{\textup{Qi YUAN}}
+
+
+%copyright at footer
+\usepackage{fancyhdr}
+\fancyhf{}
+\rfoot{%
+  \footnotesize
+  \textcopyright~Dept. of Computer Science and Engineering, GUB\\
+
+ }
+%\pagestyle{fancy}
+
+\begin{document}
+    \input{title/title.tex}
+    \tableofcontents
+  
+
+
+% Chapter 1 starting here.....    
+\newpage
+\chapter{Introduction}
+
+\section{Overview}
+
+The Social Media Friend Recommendation System is a Java-based system that allows
+users to log in, manage friendships, and receive friend recommendations using breadth-first search (BFS) and depth-first search (DFS). It is built using object-oriented programming with efficient data structures like lists, queues, and sets.
+
+\section{Motivation}
+In modern social networks, discovering new people and building meaningful connections
+can be challenging. This system is designed to simulate a scalable friend suggestion
+mechanism using graph traversal algorithms, enabling users to expand their social network
+intelligently.
+
+\section{Problem Definition}
+
+\subsection{Problem Statement}
+\begin{enumerate}
+    \item Users on social media platforms often struggle to discover potential friends they might
+know. Manual discovery is inefficient, especially in large networks. This system automates
+friend discovery based on mutual connections.
+
+\end{enumerate}
+
+\subsection{Complex Engineering Problem}
+Developing an efficient recommendation system requires handling user authentication,
+dynamic friend networks, and real-time suggestion calculations without redundancy or
+loops. It also requires memory optimization and algorithm correctness.
+
+
+\begin{table}[htbp]
+   \centering
+    \caption{Summary of the attributes touched by the Recommendation System}
+    \begin{tabular}{|p{6.5 cm}|p{8 cm}|}
+    %\rowcolor{gray!30}
+    \toprule
+        \textbf{Name of the P Attributess} & \textbf{Explain how to address}  \\
+        \midrule
+
+    \textbf{P1:} Security  & Basic security through username-based login. You’ve enhanced the system by adding a password-based login. This means users now need both a username and password to access their account, improving account security compared to the earlier version with just a username.  \\
+      \hline
+       
+    \textbf{P2:} Scalability  &  The system uses dynamic structures like ArrayList, Queue, and Set, which can handle growing numbers of users and connections. However, since there’s no database and it's running in-memory, it's more suitable for small to medium-scale usage. \\
+      \hline
+
+    \textbf{P3:} User Experience  &  Simple console-based UI; functional and easy to navigate. \\
+    \hline
+    
+    \textbf{P4:} Integration with Existing Systems   &  This project runs independently and doesn’t connect with external platforms like Facebook, Google login, or cloud databases. It works well on its own, but integration would make it more powerful and realistic. \\ 
+    \hline
+    \textbf{P5:} Regulatory Compliance  &  Basic system; no specific compliance with data protection laws. \\
+      \hline      
+    \end{tabular}
+    \label{tab:CEP}
+\end{table}
+
+\section{Design Goals/Objectives}
+\begin{itemize}
+  \item Implement user login and session handling.
+  \item Allow users to send and accept friend requests.
+  \item Maintain lists of users, friends, and requests.
+  \item Suggest potential friends using BFS and DFS.
+\end{itemize}
+
+\section{Application}
+This system can be integrated into any social networking platform to automate friend
+recommendations. Improver interaction and engagement by providing relevant connection
+suggestions and is an excellent educational project to understand graph algorithms.
+
+\begin{itemize}
+    \item \textbf{Social Media Platforms:}  
+    Can be integrated into social networks to recommend potential friends based on mutual connections.
+    
+    \item \textbf{Online Communities:}  
+    Used by online forums or groups to suggest new members to connect with based on common interests or friends.
+    
+    \item \textbf{Educational Platforms:}  
+    Helps students connect with peers based on shared courses or academic interests.
+    
+    \item \textbf{Workplace Networks:}  
+    Can be used in enterprise social networks to suggest coworkers based on departments, projects, or mutual colleagues.
+    
+    \item \textbf{Gaming Platforms:}  
+    Suggests friends for multiplayer games based on current friends and gaming interests.
+    
+    \item \textbf{Event-Based Networking:}  
+    Useful in event apps to recommend people with similar interests attending the same event.
+\end{itemize}
+
+This system can be customized and scaled for larger social platforms by adding additional features like interests, location-based suggestions, or privacy controls.
+
+
+% Chapter 1 ends here.....    
+
+
+
+
+% Chapter 2 starting here.....    
+\newpage
+\chapter{Implementation of the Project}
+
+\section{Introduction}
+The project is developed in Java using object-oriented programming. It features menu-
+driven interaction and utilizes built-in data structures from the Java Collections Frame
+work to manage user accounts and relationships.
+
+\section{Project Details}
+The system supports user login, sending/accepting friend requests, and recommending
+friends. Each user has a name, list of friends, and pending requests. Recommendations
+are generated by traversing user connections.
+\section{Project Implementation}
+
+\subsection{Objective}
+The objective of this project is to design and implement a Social Media Friend Recommendation System that allows users to log in, manage their friends, and receive friend recommendations based on mutual connections. The system uses Breadth-First Search (BFS) and Depth-First Search (DFS) algorithms to recommend friends, enhancing the user experience on social platforms by suggesting potential friends with minimal input.
+
+\subsection{Features}
+The system provides the following features:
+\begin{itemize}
+    \item \textbf{User Authentication:} Users can log in with a username and password to access their accounts.
+    \item \textbf{Friend Management:} Users can send, accept, or reject friend requests, as well as view their current friends.
+    \item \textbf{Friend Recommendations (BFS):} The system suggests friends based on mutual connections using the BFS algorithm.
+    \item \textbf{Friend Recommendations (DFS):} The system also offers friend suggestions using the DFS algorithm, exploring deeper connections.
+    \item \textbf{Account Creation:} New users can register with a username and create an account.
+    \item \textbf{Logout Option:} Users can log out of their accounts for security and session management.
+\end{itemize}
+
+\subsection{Implementation}
+The Social Media Friend Recommendation System is implemented in Java using object-oriented programming principles. The key components of the implementation are:
+
+\begin{itemize}
+    \item \textbf{User Class:} Represents a user with attributes like `name`, `friends`, and `requests`, and contains methods for managing friend relationships.
+    \item \textbf{Login System:} Users authenticate using their username and password, ensuring secure access to their accounts.
+    \item \textbf{Friendship Management:} Allows users to send and accept friend requests, as well as display their friend list.
+    \item \textbf{Recommendation Algorithms:} The system uses BFS and DFS to suggest friends based on mutual connections and degrees of separation.
+    \item \textbf{Data Structures:} Uses data structures like `ArrayList`, `HashSet`, and `Queue` to efficiently store and process users, friends, and requests.
+\end{itemize}
+
+The system operates in a command-line interface, where users interact with the program through a menu system that allows them to perform various actions.
+
+\subsection{Testing}
+Testing was performed at each stage of development to ensure the system operates correctly:
+\begin{itemize}
+    \item \textbf{Unit Testing:} Individual methods and functions were tested to verify their correctness, such as adding a user, sending a request, and recommending friends.
+    \item \textbf{Integration Testing:} Ensured that the login, friend request, and recommendation functionalities work together as expected.
+    \item \textbf{Edge Case Testing:} Tested cases like sending requests to oneself, accepting already accepted requests, and handling empty or null data.
+    \item \textbf{Manual Testing:} Performed by interacting with the system to ensure the user interface behaves as expected and the system is responsive.
+\end{itemize}
+
+\subsection{Development}
+The development process of the Social Media Friend Recommendation System followed these key stages:
+
+\begin{itemize}
+    \item \textbf{Requirement Analysis:} Determining the necessary features, such as user authentication, friend management, and friend recommendation.
+    \item \textbf{Design:} Architected the system with a user-centered approach, ensuring clear functionality and an easy-to-use menu system.
+    \item \textbf{Implementation:} Developed the system using Java, focusing on modularity and reusable code through object-oriented principles.
+    \item \textbf{Testing and Debugging:} Thorough testing was conducted to identify bugs and optimize the system's performance.
+    \item \textbf{Deployment:} The system is deployed in a local environment and can be tested by users to ensure full functionality.
+\end{itemize}
+
+\section{Implementation}
+
+\subsection{ Implementation Workflow}
+
+The implementation of the Social Media Friend Recommendation System follows a structured and modular approach. The system is designed using Java and utilizes object-oriented principles for efficient user and friend management. Below is the step-by-step workflow of the implementation:
+
+\begin{enumerate}
+    \item \textbf{User Registration and Login:}
+    \begin{itemize}
+        \item At the beginning, users are presented with a main menu where they can either log in, register a new account, or exit the program.
+        \item For registration, the system asks for a unique username (and optionally a password, if implemented) and stores the new user in the user list.
+        \item If the user selects the login option, the system checks whether the entered username exists in the system. Upon successful verification, the user is granted access to the main user dashboard.
+    \end{itemize}
+    
+    \item \textbf{Friendship Management:}
+    \begin{itemize}
+        \item Once logged in, users can manage their social network by sending or accepting friend requests.
+        \item The \texttt{sendRequest()} method allows the user to send a friend request to another user by entering their username.
+        \item The \texttt{acceptRequests()} method enables users to view and accept all pending friend requests, automatically updating both users' friend lists upon acceptance.
+    \end{itemize}
+
+    \item \textbf{Friend Recommendation (BFS and DFS):}
+    \begin{itemize}
+        \item The system suggests potential friends using two classical graph traversal algorithms:
+        \item \textbf{Breadth-First Search (BFS):} This algorithm explores all direct friends and their connections in a level-wise manner. It is effective in finding friends-of-friends.
+        \item \textbf{Depth-First Search (DFS):} This algorithm dives deeper into the network and helps in exploring further relationships that are not directly connected.
+        \item These algorithms help the system identify users who are not yet friends with the current user but have mutual friends, making them suitable recommendations.
+    \end{itemize}
+
+    \item \textbf{Friend Request and Recommendation Flow:}
+    \begin{itemize}
+        \item After receiving recommendations, the system displays a list of usernames that can be added as friends.
+        \item The user can choose to send requests to any of the recommended profiles.
+        \item This process strengthens the network graph and enhances future recommendation accuracy.
+    \end{itemize}
+
+    \item \textbf{Data Structure Utilization:}
+    \begin{itemize}
+        \item The system uses \texttt{ArrayList} to maintain the list of users and their friends.
+        \item \texttt{HashSet} is used to avoid duplicate entries during recommendation processing.
+        \item \texttt{Queue} (for BFS) and recursion (for DFS) are used to implement the traversal logic efficiently.
+    \end{itemize}
+    
+    \item \textbf{Logout and Session Handling:}
+    \begin{itemize}
+        \item The user has the option to log out at any time.
+        \item On logout, the system resets the \texttt{currentUser} to \texttt{null} and returns to the main menu for new login or registration actions.
+    \end{itemize}
+\end{enumerate}
+
+% Chapter 2 ends here..... 
+
+
+
+
+
+
+
+
+% Chapter 3 starting here..... 
+\newpage
+\chapter{Performance Evaluation}
+
+\section{Simulation Procedure}
+The application was run in a local Java IDE, simulating multiple user interactions. Users
+were created, connected, and tested for friend suggestions via BFS and DFS.
+\subsection{Results Analysis and Testing}
+
+To ensure the reliability and correctness of the Social Media Friend Recommendation System, extensive testing was performed. The functionalities were tested with various edge cases and user scenarios. These included:
+
+\begin{itemize}
+    \item \textbf{Sending Friend Request to Self:} The system correctly prevents users from sending friend requests to themselves by checking usernames before processing the request.
+    
+    \item \textbf{Accepting All Pending Requests:} The system accurately displays all pending friend requests and successfully updates both users' friend lists upon acceptance, ensuring mutual friendship integrity.
+    
+    \item \textbf{Suggesting Mutual Friends Across Multiple Layers:} Both BFS and DFS algorithms were tested for friend recommendation. BFS effectively provided broader recommendations through level-wise traversal, while DFS explored deeper and more distant relationships within the graph.
+    
+    \item \textbf{Duplicate Friend Prevention:} The system prevented duplicate requests or friend entries using Java \texttt{Set} structures and conditional checks during the traversal and acceptance process.
+    
+    \item \textbf{Login and Session Handling:} The login/logout mechanisms were verified to ensure only the authenticated user could perform social actions like sending/accepting requests or viewing friends.
+\end{itemize}
+
+\subsection{Results Overall Discussion}
+
+The testing phase demonstrated that the system works as intended. The BFS algorithm proved to be more effective for users looking for broad and immediate mutual friend suggestions, especially in denser networks. In contrast, the DFS algorithm was capable of revealing hidden friend connections that may span across several nodes, making it more useful for deeper social exploration.
+
+The results confirmed that both algorithms provided accurate, non-redundant recommendations and maintained the data integrity of the network.
+
+\subsection{Complex Engineering Problem Discussion}
+
+The core complexity of this system lies in handling dynamic social networks as graphs and ensuring efficient traversal without introducing logical errors like cycles or redundant links. Implementing BFS and DFS in a way that scales with user size required the careful selection of data structures such as:
+
+\begin{itemize}
+    \item \texttt{ArrayList} for maintaining user and friend lists.
+    \item \texttt{HashSet} for tracking visited nodes and eliminating duplicates.
+    \item \texttt{Queue} and recursive functions for implementing BFS and DFS respectively.
+\end{itemize}
+
+Using object-oriented principles in Java allowed modularity and re-usability, making the code base easy to maintain and extend. The program structure ensured that each feature — from login to recommendation — interacted smoothly without compromising performance or security.
+
+% Chapter 3 ends here..... 
+
+
+
+
+% Chapter 5 starts here..... 
+\newpage
+\chapter{Conclusion}
+\section{Conclusion}
+
+\subsection{Discussion}
+The Social Media Friend Recommendation System developed in this project successfully simulates the core functionality of a basic social networking platform. It incorporates essential features such as user login, user registration, sending and accepting friend requests, and suggesting potential friends using two powerful graph traversal algorithms: Breadth-First Search (BFS) and Depth-First Search (DFS). 
+
+This implementation showcases how data structures such as lists, sets, and queues, combined with object-oriented principles in Java, can be used to model and manage dynamic user networks effectively. The system demonstrates how graph-based algorithms can be applied in real-world applications like social media platforms for friend discovery.
+
+\subsection{Limitations}
+Despite its functional strengths, the current system has some limitations:
+
+\begin{itemize}
+    \item \textbf{Lack of Authentication:} The system currently does not support password-based authentication, which limits its security and restricts its deployment in real environments.
+    
+    \item \textbf{Command-Line Interface:} The program runs entirely in the console, which is not user-friendly or visually appealing for end-users.
+    
+    \item \textbf{Scalability Concerns:} The system is designed for small-scale use and may not perform optimally when handling a large number of users or relationships.
+\end{itemize}
+
+\subsection{Scope of Future Work}
+To improve and extend the current system, several future enhancements can be considered:
+
+\begin{itemize}
+    \item \textbf{Add Password Authentication:} Implementing secure login with password verification and encryption mechanisms will improve the system's safety and realism.
+    
+    \item \textbf{Develop a Graphical User Interface (GUI):} A GUI using JavaFX or Swing will make the application more intuitive and user-friendly.
+    
+    \item \textbf{Optimize Algorithm Performance:} Modifying the BFS and DFS algorithms to handle large-scale social networks more efficiently will enhance performance and scalability.
+    
+    \item \textbf{Introduce User Profiles and Activity Logs:} Adding more features like user bios, profile pictures, and interaction logs could bring the simulation closer to modern social media systems.
+    
+    \item \textbf{Implement Real-Time Notifications:} Users can be notified of friend requests or suggestions dynamically, improving interactivity.
+\end{itemize}
+
+
+
+% References starts here.....
+  \newpage
+  \renewcommand\bibname{References}
+  \bibliographystyle{unsrt}
+  \bibliography{Ref}
+  
+\begin{enumerate}
+    \item Oracle Java Documentation: \url{https://docs.oracle.com/en/java/} \\
+    Official documentation for the Java programming language used in the implementation of this project.
+
+    \item GeeksforGeeks – Graph Algorithms: \url{https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/} \\
+    Resource for understanding and implementing graph traversal algorithms like BFS and DFS.
+
+    \item Java Collections Framework – TutorialsPoint: \url{https://www.tutorialspoint.com/java/java_collections.htm} \\
+    Helpful reference for understanding Java data structures used in this project such as ArrayList, HashSet, and Queue.
+
+\end{document}
